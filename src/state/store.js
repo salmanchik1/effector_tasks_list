@@ -9,4 +9,8 @@ export const tasksStore = createStore([])
             task.id === id ? { ...task, completed: !task.completed } : task
         )
     )
-    .on(fetchTasks.doneData, (state, tasks) => [...state, ...tasks]);
+    .on(fetchTasks.doneData, (state, tasks) => {
+        // Remove tasks that are already in the store
+        const newTasks = tasks.filter((task) => !state.some((t) => t.id === task.id));
+        return [...state, ...newTasks];
+    });

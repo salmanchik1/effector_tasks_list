@@ -2,7 +2,7 @@ import { useState } from "react";
 import { addTask } from "../state/events";
 
 const AddTaskForm = () => {
-    const [taskText, setTaskText] = useState([]);
+    const [taskText, setTaskText] = useState("");
     const handleAddTask = (e) => {
         e.preventDefault();
         if (taskText.trim() !== "") {

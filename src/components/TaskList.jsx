@@ -4,6 +4,9 @@ import { toggleTask } from "../state/events";
 
 const TaskList = () => {
     const tasks = useUnit(tasksStore);
+    if (tasks.length === 0) {
+        return <p>No tasks found.</p>;
+    }
     return (
         <ul className="task-list">
             {tasks.map((task) => (
